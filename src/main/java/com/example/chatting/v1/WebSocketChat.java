@@ -1,4 +1,4 @@
-package com.example.chatting;
+package com.example.chatting.v1;
 
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnMessage;
@@ -15,8 +15,8 @@ import java.util.*;
 @Service
 @ServerEndpoint("/socket/chatt")
 public class WebSocketChat {
-    private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
-    private static Logger logger = LoggerFactory.getLogger(WebSocketChat.class);
+    private static final Set<Session> clients = Collections.synchronizedSet(new HashSet<>());
+    private static final Logger logger = LoggerFactory.getLogger(WebSocketChat.class);
 
     //클라이언트가 접속할 때마다 동작 로직
     @OnOpen
@@ -40,7 +40,6 @@ public class WebSocketChat {
 
         for (Session s : clients) {
             logger.info("who are you : {}", s);
-            logger.info("who are you : {}", s.getId());
             logger.info("send data : {}", message);
             s.getBasicRemote().sendText(message);
         }

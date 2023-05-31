@@ -1,4 +1,4 @@
-package com.example.chatting;
+package com.example.chatting.v1;
 
 
 import org.springframework.context.annotation.Bean;
